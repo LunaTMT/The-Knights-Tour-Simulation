@@ -160,22 +160,15 @@ class UI:
         self.title = self.font.render("The Knight's Tour", True, BLACK)
         self.title_rect = self.title.get_rect(center=(995, 100))
 
-        self.labels = {
-            "n_text_title": ("Board Size", (995, 220)),
-            "fps_text_title": ("FPS", (995, 470))
-        }
 
-        self.texts = {
-            "n_text": (self.n_input_range.value, (995, 300)),
-            "fps_text": (self.FPS_input_range.value, (995, 550))
-        }
 
-        self.update_text_surface()
-
-    def update_text_surface(self):
-        for label, (text, center) in self.texts.items():
-            self.texts[label] = (self.font.render(str(text), True, BLACK), center)
-
+        self.texts = [
+            ["Board Size", [995, 220]],
+            ["FPS", [995, 470]],
+            [self.n_input_range.value, [995, 300]],
+            [self.FPS_input_range.value, [995, 550]]
+        ]
+        
     def handle_events(self):
         for event in pygame.event.get():
             self.FPS_input_range.update(event)
@@ -198,13 +191,16 @@ class UI:
                         else:
                             self.grid.path = path
                             self.grid.chosen_square = self.grid.position
-                            self.grid.invalid_square = None
-                        
+                            self.grid.invalid_square = None       
         return True
 
     def update(self):
         self.grid.update(self.n_input_range.value)
-        
+
+        self.texts[2][0] = self.n_input_range.value
+        self.texts[3][0] = self.FPS_input_range.value
+
+    
     def draw(self):
         self.screen.fill(WHITE)
         self.grid.draw(self.screen)
@@ -220,11 +216,10 @@ class UI:
 
         self.screen.blit(self.title, self.title_rect)
 
-        for label, (text, rect_center) in self.labels.items():
-            self.screen.blit(self.font.render(text, True, BLACK), self.font.render(text, True, BLACK).get_rect(center=rect_center))
-
-        for label, (text_surface, rect_center) in self.texts.items():
+        for text, rect_center in self.texts:
+            text_surface = self.font.render(str(text), True, BLACK)
             self.screen.blit(text_surface, text_surface.get_rect(center=rect_center))
+
 
         pygame.display.flip()
 
@@ -296,8 +291,6 @@ class UI:
         else:
             return False
 
-
-
 class InputRange:
     def __init__(self, x, y, width, height, min_value, max_value, initial_value):
         self.x = x
@@ -310,7 +303,6 @@ class InputRange:
         self.value = initial_value
         self.is_dragging = False
 
-        # Colors
         self.slider_color = (100, 100, 100)
         self.slider_button_radius = 10
         self.slider_button_color = (200, 50, 50)
@@ -330,7 +322,6 @@ class InputRange:
             mouse_x, _ = pygame.mouse.get_pos()
             self.value = ((mouse_x - self.x) / self.width) * self.visual_range + self.min_value
             self.value = int(max(self.min_value, min(self.value, self.max_value)))
-            #print(self.value)
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.slider_color, (self.x, self.y, self.width, self.height))
@@ -338,9 +329,6 @@ class InputRange:
         pygame.draw.circle(screen, self.slider_button_color,
                            (int(slider_button_x), self.y + self.height // 2),
                            self.slider_button_radius)
-
-
-
-#5 - 30
+        
 simulation = UI()
 simulation.run()
