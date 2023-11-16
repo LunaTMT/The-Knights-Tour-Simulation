@@ -6,8 +6,6 @@ https://github.com/LunaTMT/The-Knights-Tour-Simulation/assets/44672093/f9c11e26-
 
 Warnsdorff's algorithm is a heuristic approach used to solve the knight's tour problem on a chessboard. The problem is to find a sequence of moves by a knight on an n×n chessboard such that the knight visits every square exactly once.
 
-Overview on Warnsdorff's:
-
 #### Steps of the Algorithm:
 
 1. **Initialize the Board:**
