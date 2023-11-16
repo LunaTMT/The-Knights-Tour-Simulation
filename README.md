@@ -2,14 +2,14 @@
 
 https://github.com/LunaTMT/The-Knights-Tour-Simulation/assets/44672093/f9c11e26-7a00-478d-ba01-750014f84a1f
 
-## Warnsdorff's algorithm&#x20;
+## Warnsdorff's algorithm
 
-Warnsdorff's algorithm is a heuristic approach used to solve the knight's tour problem on a chessboard. The problem is to find a sequence of moves by a knight on an n×n chessboard such that the knight visits every square exactly once.
+Warnsdorff's algorithm is a heuristic approach used to solve the knight's tour problem on a chessboard. The problem is to find a sequence of moves by a knight on an _n×n_ chessboard such that the knight visits every square exactly once.
 
 #### Steps of the Algorithm:
 
 1. **Initialize the Board:**
-   * Begin with an empty n×n chessboard.
+   * Begin with an empty _n×n_ chessboard.
    * Choose a starting square for the knight.
 2. **Choose Next Move:**
    * From the current position of the knight, find all legal moves that haven't been visited yet.
@@ -28,6 +28,6 @@ Warnsdorff's algorithm is a heuristic approach used to solve the knight's tour p
 * **Heuristic Approach:** Warnsdorff's algorithm is a heuristic, meaning it's not guaranteed to find a solution but aims for efficient decision-making.
 * **Optimization:** By choosing the square with the fewest available next moves, Warnsdorff's algorithm tries to avoid early dead ends and improves the chances of finding a solution.
 * **Backtracking:** If the algorithm reaches a point where it cannot continue (no available moves from a square), it backtracks to the previous square and explores a different path.
-* **Efficiency:** While it doesn't guarantee a solution for all board sizes or starting positions, it tends to perform well on many n×n chessboards, finding solutions relatively quickly.
+* **Efficiency:** While it doesn't guarantee a solution for all board sizes or starting positions, it tends to perform well on many _n×n_ chessboards, finding solutions relatively quickly.
 
 Overall, Warnsdorff's algorithm is a popular and straightforward heuristic approach for solving the knight's tour problem, providing a good balance between efficiency and simplicity.
